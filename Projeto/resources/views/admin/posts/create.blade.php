@@ -1,14 +1,12 @@
-<h1>Cadastrar Novo Post</h1>
+@extends('admin.layouts.app')
 
-@if ($$errors->any())
-    <ul>
-        @forech (errors->all() as $error)
-            <li>{{ $error  }}</li>
-    </ul>
-<form action="{{ route('posts.create')}}" method="get">
-    @csrf
-    <input type="text" name="title" id="title" placeholder="Título">
-    <textarea name="content" id="content" cols="30" rows="4" placeholder="Conteúdo"></textarea>
-    <button type="submit">Enviar</button>
-</form>
+@section('title', 'Criar Novo Post')
 
+@section('content')
+    <h1>Cadastrar Novo Post</h1>
+
+    <form action="{{ route('posts.store')}}" method="post" enctype="multipart/form-data">
+        @include('admin.posts._partials.form')
+    </form>
+
+@endsection
